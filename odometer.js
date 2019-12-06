@@ -14,15 +14,15 @@
 
   FORMAT_PARSER = /^\(?([^)]*)\)?(?:(.)(d+))?$/;
 
-  FRAMERATE = 30;
+  FRAMERATE = 50;
 
-  DURATION = 10000;
+  DURATION = 20000;
 
   COUNT_FRAMERATE = 50;
 
   FRAMES_PER_VALUE = 2;
 
-  DIGIT_SPEEDBOOST = .5;
+  DIGIT_SPEEDBOOST = 2;
 
   MIN_INTEGER_LEN = 2;
 
@@ -547,9 +547,9 @@
         if (Math.abs(dist) > this.MAX_VALUES) {
           frames = [];
           incr = dist / (this.MAX_VALUES + this.MAX_VALUES * boosted * DIGIT_SPEEDBOOST);
-          cur = start;
-          while ((dist > 0 && cur < end) || (dist < 0 && cur > end)) {
-            frames.push(Math.round(cur));
+          cur = start;          
+          while ((dist > 0 && cur < end) || (dist < 0 && cur > end)) {            
+            frames.push(Math.round(cur));            
             cur += incr;
           }
           if (frames[frames.length - 1] !== end) {
@@ -559,7 +559,20 @@
         } else {
           frames = (function() {
             _results = [];
-            for (var _j = start; start <= end ? _j <= end : _j >= end; start <= end ? _j++ : _j--) { _results.push(_j); }
+            for (
+              var _j = 0; 
+              _j < 11;
+              _j++
+            ) {
+              if(_j === 0){
+                _results.push(start);
+              }
+              if (_j === 10) {
+                _results.push(end);
+              } else {
+                _results.push(Math.floor(Math.random() * 10));
+              }              
+            }
             return _results;
           }).apply(this);
         }
