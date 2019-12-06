@@ -1,0 +1,44 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="odometer-theme-trainstation.css" />
+        <script src="odometer.js"></script>
+        <script>
+            function getRandomInt(min, max) {
+                min = Math.ceil(min);
+                max = Math.floor(max);
+                odometer.innerHTML = Math.floor(Math.random() * (max - min + 1)) + min;
+            }
+        </script>
+    </head>
+
+    <style>
+        body { background: #4B122D; }
+        .wrapper {
+            display: block;
+            margin: auto !important;
+            width: 1920px;
+            height: 1080px;
+            background-image: url('bg.png');
+        }
+
+        .randomizer{
+            display: block;
+            margin: auto;
+            width: 560px;
+            padding-top: 350px;
+        }
+
+        .odometer {            
+            font-size: 300px;
+        }
+    </style>
+
+    <body>
+        <div class="wrapper">
+            <div class="randomizer" onclick="getRandomInt(1,43)">
+                <div id="odometer" class="odometer">00</div>
+                <!-- <button>CLICK MEE</button> -->
+            </div>            
+        </div>        
+    </body>
+</html>
